@@ -21,7 +21,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'bling/vim-airline'
 
 " Coding autofill
-Plugin 'https://github.com/Valloric/YouCompleteMe.git'
+"Plugin 'https://github.com/Valloric/YouCompleteMe.git'
 
 "Auto close braces
 Plugin 'https://github.com/Raimondi/delimitMate.git'
@@ -79,11 +79,11 @@ let mapleader=","
 
 " shortcuts for tabs 
 nnoremap <silent> <leader>t :tabnew<CR>
-inoremap <leader>t <Esc>:tabnew<CR>
+"inoremap <leader>t <Esc>:tabnew<CR>
 nnoremap <silent> <leader>n :tabnext<CR>
-inoremap <leader>n <esc>:tabnext<CR>
+"inoremap <leader>n <esc>:tabnext<CR>
 nnoremap <silent> <leader>p :tabprevious<CR>
-inoremap <leader>p <Esc>:tabprevious<CR>
+"inoremap <leader>p <Esc>:tabprevious<CR>
 
 " Visual block remapping
 nnoremap <silent> <leader>v <C-V>
@@ -107,3 +107,5 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 " expand auto braces
 let delimitMate_expand_cr = 1
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
