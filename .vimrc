@@ -89,7 +89,7 @@ set number
 
 " use spaces instead of tabs
 " set all tabs and indentations to a width of 4
-set expandtab
+" set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -224,3 +224,6 @@ let g:TagHighlightSettings['TagFileName'] = '.tags'
 " toggle paste mode
 set pastetoggle=<F2>
 nnoremap <silent> <leader>i <F2>
+
+" project specific settings -> tabsize 2 for pyxis
+au BufRead,BufEnter /Users/Rane/Documents/Classes_Spring16/Independent\ Study/pyxis/* setlocal ts=2 sts=2 sw=2 expandtab
