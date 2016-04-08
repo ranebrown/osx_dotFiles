@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+"set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -12,8 +12,12 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 
+" netrw enhancments
+Plugin 'https://github.com/tpope/vim-vinegar.git'
+
 " ctags highlighter
 Plugin 'https://github.com/abudden/taghighlight-automirror.git'
+Plugin 'https://github.com/gauravjuvekar/abudden-EasyColour.git'
 
 " Syntax checker
 Plugin 'https://github.com/scrooloose/syntastic.git'
@@ -75,7 +79,6 @@ filetype plugin indent on    " required
 syntax enable
 
 "enable colorscheme
-
 let g:solarized_termcolors=16
 set t_Co=16
 set background=dark
@@ -89,7 +92,7 @@ set number
 
 " use spaces instead of tabs
 " set all tabs and indentations to a width of 4
-" set expandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -101,8 +104,11 @@ imap jj <esc>
 set splitbelow
 set splitright
 
-" set default netrw (explore) view style
-let g:netrw_liststyle=3
+" set default netrw view style
+let g:netrw_liststyle=0
+
+" default hide dot files in netrw
+let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
 
 " change leader key
 let mapleader=","
@@ -111,10 +117,6 @@ let mapleader=","
 nnoremap <silent> <leader>t :tabnew<CR>
 nnoremap <silent> <leader>n :tabnext<CR>
 nnoremap <silent> <leader>p :tabprevious<CR>
-
-" Visual block remapping
-nnoremap <silent> <leader>v <C-V>
-inoremap <leader>v <esc><C-V>
 
 "switch between windows
 nnoremap <leader>l <C-w>l
@@ -175,6 +177,10 @@ let g:ycm_confirm_extra_conf = 0
 " don't use ycm's syntax checker
 let g:ycm_show_diagnostics_ui = 0
 
+" close scratch buffer after exiting insert mode
+" scratch buffer pops up for structs when completing a element of that struct
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 " syntasitc settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -185,9 +191,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_c_checkers = ["clang_check"]
-let g:syntastic_cpp_checkers = ["clang_check"]
-let g:syntastic_clang_check_config_file = '.syntastic_clang_check_config'
+let g:syntastic_c_checkers = ['gcc']
+let g:syntastic_cpp_checkers = ['gcc']
 
 " don't echo open buffers to command line
 let g:bufferline_echo = 0
@@ -203,7 +208,7 @@ let g:easytags_dynamic_files = 1
 let g:easytags_languages = {
 \'c': {
 \   'cmd': '/usr/bin/ctags',
-\       'args': ['--fields=+l', '--c-kinds=+p'],
+\       'args': ['--fields=+l', '--c-kinds=+defgmpst'],
 \       'fileoutput_opt': '-f',
 \       'stdout_opt': '-f-',
 \       'recurse_flag': '-R'
@@ -221,9 +226,9 @@ if ! exists('g:TagHighlightSettings')
 endif
 let g:TagHighlightSettings['TagFileName'] = '.tags'
 
-" toggle paste mode
-set pastetoggle=<F2>
-nnoremap <silent> <leader>i <F2>
+" copy and paste to global clipboard
+vnoremap <C-c> "+y
+nnoremap <silent> <leader>v "+p
 
-" project specific settings -> tabsize 2 for pyxis
+"project specific settings -> tabsize 2 for pyxis
 au BufRead,BufEnter /Users/Rane/Documents/Classes_Spring16/Independent\ Study/pyxis/* setlocal ts=2 sts=2 sw=2 expandtab
