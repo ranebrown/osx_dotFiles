@@ -19,9 +19,6 @@ Plugin 'https://github.com/tpope/vim-vinegar.git'
 Plugin 'https://github.com/abudden/taghighlight-automirror.git'
 Plugin 'https://github.com/gauravjuvekar/abudden-EasyColour.git'
 
-" Syntax checker
-Plugin 'https://github.com/scrooloose/syntastic.git'
-
 " Code completion
 Plugin 'Valloric/YouCompleteMe'
 
@@ -81,7 +78,7 @@ syntax enable
 "enable colorscheme
 let g:solarized_termcolors=16
 set t_Co=16
-set background=dark
+set background=light
 colorscheme solarized
 
 " show status line all the time
@@ -112,6 +109,9 @@ let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
 
 " change leader key
 let mapleader=","
+
+" spell check
+nnoremap <silent> <leader>s :setlocal spell spelllang=en_us<CR>
 
 " shortcuts for tabs
 nnoremap <silent> <leader>t :tabnew<CR>
@@ -174,25 +174,31 @@ let g:ycm_key_list_previous_completion = ['<leader><Tab>', '<Up>']
 " don't ask to load .ycm config files
 let g:ycm_confirm_extra_conf = 0
 
-" don't use ycm's syntax checker
-let g:ycm_show_diagnostics_ui = 0
+" use ycm's syntax checker
+let g:ycm_show_diagnostics_ui = 1
+
+" number of characters required to start ycm
+let g:ycm_min_num_of_chars_for_completion = 1
 
 " close scratch buffer after exiting insert mode
 " scratch buffer pops up for structs when completing a element of that struct
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-" syntasitc settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_c_checkers = ['gcc']
-let g:syntastic_cpp_checkers = ['gcc']
+" YCM settings and shortcuts
+" populate errors to list
+" :lopen and :lclose to view
+let g:ycm_always_populate_location_list = 1
+let g:ycm_enable_diagnostic_highlighting = 1
+let g:ycm_echo_current_diagnostic = 1
+let g:ycm_complete_in_comments = 1
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>fi :YcmCompleter FixIt<CR>
+nnoremap <leader>rr :YcmForceCompileAndDiagnostics
+
+" YCM integration with airline status bar
+let g:airline#extensions#ycm#enabled = 1
+let g:airline#extensions#ycm#error_symbol = 'Errors:'
+let g:airline#extensions#ycm#warning_symbol = 'Warnings:'
 
 " don't echo open buffers to command line
 let g:bufferline_echo = 0
