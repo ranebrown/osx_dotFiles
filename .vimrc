@@ -72,6 +72,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" change leader key
+let mapleader=","
+
 " enable syntax highlighting
 syntax enable
 
@@ -86,6 +89,17 @@ set laststatus=2
 
 " show line numbers
 set number
+
+" open new empty buffer
+nnoremap <silent> <leader>t :enew<CR>
+" Move to the next buffer
+nnoremap <silent> <leader>n :bnext<CR>
+" Move to the previous buffer
+nnoremap <silent> <leader>p :bprevious<CR>
+" shortcuts for tabs
+nnoremap <silent> <leader>T :tabnew<CR>
+nnoremap <silent> <leader>N :tabnext<CR>
+nnoremap <silent> <leader>P :tabprevious<CR>
 
 " use spaces instead of tabs
 " set all tabs and indentations to a width of 4
@@ -107,16 +121,8 @@ let g:netrw_liststyle=0
 " default hide dot files in netrw
 let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
 
-" change leader key
-let mapleader=","
-
 " spell check
 nnoremap <silent> <leader>s :setlocal spell spelllang=en_us<CR>
-
-" shortcuts for tabs
-nnoremap <silent> <leader>t :tabnew<CR>
-nnoremap <silent> <leader>n :tabnext<CR>
-nnoremap <silent> <leader>p :tabprevious<CR>
 
 "switch between windows
 nnoremap <leader>l <C-w>l
@@ -136,12 +142,13 @@ nnoremap <silent> <leader>= :exe "vertical resize +5"<CR>
 nnoremap <silent> <leader>- :exe "vertical resize -5"<CR>
 
 " toggle tagbar
-nnoremap <silent> <leader>b :TagbarToggle<CR>
+nnoremap <silent> <leader>tb :TagbarToggle<CR>
 
 " CTRL-P shortcuts
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nnoremap <leader>m :CtrlPTag<cr>
+nnoremap <leader>b :CtrlPBuffer<CR>
 
 nnoremap <silent> <leader>1 :Explore<CR>
 nnoremap <silent> <leader>2 :Lexplore<CR>
