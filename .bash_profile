@@ -46,7 +46,8 @@ alias com='ls /dev/tty.*'
 alias usb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*'"
 
 #modify bash prompt
-export PS1="\033[32m\][\w]\[\033[0m\] \n\[\033[1;36m\]\u\[\033[1;33m\]$ \[\033[0m\]"
+# export PS1="\033[32m\][\w]\[\033[0m\] \n\[\033[1;36m\]\u\[\033[1;33m\]$ \[\033[0m\]"
+export PS1="\[\e[36m\][\w]\[\e[m\]\n\[\e[33m\]\!\[\e[m\][\u]\[\e[1;31m\]>> \[\e[m\]"
 
 #open matlab in terminal
 alias matlab='/Applications/MATLAB_R2014b.app/bin/matlab -nodesktop -nosplash'
@@ -56,6 +57,22 @@ alias show='defaults write com.apple.finder AppleShowAllFiles YES; killall Finde
 alias hide='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
+
+# Eternal bash history.
+# if bash starts taking long time to load file size is getting too big
+# ---------------------
+# Undocumented feature which sets the size to "unlimited".
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+export HISTFILE=~/.bash_eternal_history
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 #             oooo   o8o
 #             `888   `"'
 #    .oooo.    888  oooo   .oooo.    .oooo.o  .ooooo.   .oooo.o
