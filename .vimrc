@@ -75,15 +75,21 @@ filetype plugin indent on    " required
 " change leader key
 let mapleader=","
 
+" don't let airline overwrite bufferline settings
 let g:airline#extensions#bufferline#overwrite_variables = 0
-" display buffers on top if only 1 tab open
+
+" display buffers at top of window if only 1 tab open
 let g:airline#extensions#tabline#enabled = 1
+
+" change buffer tab seperation marker
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " bufferline settings (buffers in vim airline)
-let g:bufferline_modified = '+++'
+let g:bufferline_modified = '++'
 let g:bufferline_show_bufnr = 0
+" show available highlight groups:
+" :so $VIMRUNTIME/syntax/hitest.vim
 let g:bufferline_active_highlight = 'DiffText'
 
 " toggle background light/dark
