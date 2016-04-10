@@ -193,7 +193,7 @@ let g:ycm_echo_current_diagnostic = 1
 let g:ycm_complete_in_comments = 1
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>fi :YcmCompleter FixIt<CR>
-nnoremap <leader>rr :YcmForceCompileAndDiagnostics
+nnoremap <leader>rr :YcmForceCompileAndDiagnostics<CR>
 
 " YCM integration with airline status bar
 let g:airline#extensions#ycm#enabled = 1
