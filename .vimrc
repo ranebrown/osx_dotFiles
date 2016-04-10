@@ -178,7 +178,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 
 " number of characters required to start ycm
-let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 2
 
 " close scratch buffer after exiting insert mode
 " scratch buffer pops up for structs when completing a element of that struct
