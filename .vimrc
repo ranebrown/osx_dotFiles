@@ -78,13 +78,6 @@ let mapleader=","
 " don't let airline overwrite bufferline settings
 let g:airline#extensions#bufferline#overwrite_variables = 0
 
-" display buffers at top of window if only 1 tab open
-let g:airline#extensions#tabline#enabled = 1
-
-" change buffer tab seperation marker
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
 " bufferline settings (buffers in vim airline)
 let g:bufferline_modified = '++'
 let g:bufferline_show_bufnr = 0
@@ -224,6 +217,10 @@ let g:ycm_complete_in_comments = 1
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
 nnoremap <leader>fi :YcmCompleter FixIt<CR>
 nnoremap <leader>rr :YcmForceCompileAndDiagnostics<CR>
+
+" YCM syntax error log
+nnoremap <leader>o :lopen<CR>
+nnoremap <leader>c :lclose<CR>
 
 " YCM integration with airline status bar
 let g:airline#extensions#ycm#enabled = 1
