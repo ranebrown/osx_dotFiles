@@ -258,6 +258,7 @@ if ! exists('g:TagHighlightSettings')
     let g:TagHighlightSettings = {}
 endif
 let g:TagHighlightSettings['TagFileName'] = '.tags'
+let g:TagHighlightSettings['TypesFilePrefix'] = '.types'
 
 " copy and paste to global clipboard
 vnoremap <C-c> "+y
