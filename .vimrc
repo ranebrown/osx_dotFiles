@@ -12,6 +12,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 
+" latex !!
+" Plugin 'https://github.com/lervag/vimtex.git'
+Plugin 'https://github.com/LaTeX-Box-Team/LaTeX-Box.git'
+
 Plugin 'https://github.com/justinmk/vim-sneak.git'
 
 " good vim default settings
@@ -287,7 +291,7 @@ set wildmenu
 autocmd FileType netrw setl bufhidden=delete
 
 " save and close a buffer
-:command Wd write|bdelete
+:command! Wd write|bdelete
 
 " automatically fold code
 set foldmethod=syntax
@@ -296,4 +300,28 @@ set foldmethod=syntax
 set hlsearch
 
 " press space to disable highlight
-nnoremap <silent> <leader>n :nohlsearch<Bar>:echo<CR>
+nnoremap <silent> <leader><space> :nohlsearch<CR>
+
+" :silent can cause screen to need redrawn -> using this fixes the issue
+command! -nargs=1 Silent
+\ | execute ':silent!'.<q-args>
+\ | execute ':redraw!'
+
+" use skim to display latex pdf
+let g:LatexBox_viewer = 'open -a Skim'
+
+" forward search tex file to pdf
+let g:LatexBox_latexmk_options
+                \ = "-pdflatex='pdflatex -synctex=1 \%O \%S'"
+
+" jump to the current line in a tex file in the pdf version
+map <silent> <LocalLeader>lp :Silent
+        \ !/Applications/Skim.app/Contents/SharedSupport/displayline
+        \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
+        \ "%:p"<CR>
+
+" latex folding
+let g:LatexBox_Folding=1
+
+" don't close folds after exiting insert mode
+let g:LatexBox_fold_automatic = 1
