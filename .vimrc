@@ -286,6 +286,14 @@ set wildmenu
 "kill netrw buffers when hidden
 autocmd FileType netrw setl bufhidden=delete
 
+" save and close a buffer
 :command Wd write|bdelete
 
+" automatically fold code
 set foldmethod=syntax
+
+" highlight all matches
+set hlsearch
+
+" press space to disable highlight
+nnoremap <silent> <leader>n :nohlsearch<Bar>:echo<CR>
