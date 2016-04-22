@@ -12,6 +12,11 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 
+Plugin 'https://github.com/justinmk/vim-sneak.git'
+
+" good vim default settings
+Plugin 'https://github.com/tpope/vim-sensible.git'
+
 " netrw enhancments
 Plugin 'https://github.com/tpope/vim-vinegar.git'
 
@@ -132,7 +137,7 @@ set splitbelow
 set splitright
 
 " set default netrw view style
-let g:netrw_liststyle=0
+" let g:netrw_liststyle=0
 
 " default hide dot files in netrw
 let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
@@ -176,7 +181,7 @@ nnoremap <silent> <leader><tab> :%retab!<CR>
 " file with :vsplit to the right of the browser.
 "let g:netrw_browse_split = 4
 " change from left split to right split
-let g:netrw_altv = 1
+" let g:netrw_altv = 1
 
 " open a tag in new tab
 nnoremap <silent> <Leader>F <C-w><C-]><C-w>T
@@ -205,7 +210,14 @@ let g:ycm_min_num_of_chars_for_completion = 2
 
 " close scratch buffer after exiting insert mode
 " scratch buffer pops up for structs when completing a element of that struct
-let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" don't show the preview window
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+
+" shorter text for command
+command! Gd YcmCompleter GetDoc
 
 " YCM settings and shortcuts
 " populate errors to list
@@ -271,3 +283,9 @@ au BufRead,BufEnter /Users/Rane/Documents/Classes_Spring16/Independent\ Study/py
 set wildmode=longest:full,full
 set wildmenu
 
+"kill netrw buffers when hidden
+autocmd FileType netrw setl bufhidden=delete
+
+:command Wd write|bdelete
+
+set foldmethod=syntax
