@@ -297,8 +297,7 @@ autocmd FileType netrw setl bufhidden=delete
 set foldmethod=syntax
 
 " highlight all matches
-set hlsearch
-nnoremap <CR> :noh<CR><CR>
+nnoremap <localleader>h :set hlsearch!<CR>
 
 " :silent can cause screen to need redrawn -> using this fixes the issue
 command! -nargs=1 Silent
