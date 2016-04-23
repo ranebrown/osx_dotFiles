@@ -298,9 +298,7 @@ set foldmethod=syntax
 
 " highlight all matches
 set hlsearch
-
-" press space to disable highlight
-nnoremap <silent> <leader><space> :nohlsearch<CR>
+nnoremap <CR> :noh<CR><CR>
 
 " :silent can cause screen to need redrawn -> using this fixes the issue
 command! -nargs=1 Silent
@@ -325,3 +323,14 @@ let g:LatexBox_Folding=1
 
 " don't close folds after exiting insert mode
 let g:LatexBox_fold_automatic = 1
+
+" search options
+set ignorecase
+set smartcase
+
+" latex-box shortcuts in text mode
+imap ]] <Plug>LatexCloseCurEnv
+imap <buffer> [[     \begin{
+
+" omni complete shortcut
+inoremap <C-x> <C-x><C-o>
