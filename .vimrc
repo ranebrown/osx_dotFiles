@@ -295,6 +295,7 @@ autocmd FileType netrw setl bufhidden=delete
 
 " automatically fold code
 set foldmethod=syntax
+let c_no_comment_fold = 1
 
 " highlight all matches
 nnoremap <localleader>h :set hlsearch!<CR>
