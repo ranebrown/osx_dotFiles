@@ -7,10 +7,15 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+" airline themes
+Plugin 'https://github.com/vim-airline/vim-airline-themes.git'
+
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
+" Colorschemes
+Plugin 'https://github.com/flazz/vim-colorschemes.git'
 
 " latex !!
 " Plugin 'https://github.com/lervag/vimtex.git'
@@ -104,10 +109,11 @@ set hidden
 syntax enable
 
 "enable colorscheme
-let g:solarized_termcolors=16
-set t_Co=16
-set background=light
-colorscheme solarized
+" let g:solarized_termcolors=16
+" set t_Co=16
+let &t_Co=256
+" set background=dark
+colorscheme hybrid_material
 
 " show status line all the time
 set laststatus=2
@@ -192,7 +198,7 @@ nnoremap <silent> <Leader>F <C-w><C-]><C-w>T
 
 " theme for airline status bar - must copy theme to
 " ~/.vim/bundle/vim-airline/autoload/airline/themes/
-let g:airline_theme='solarized'
+let g:airline_theme='hybrid'
 
 " used to show tabs and spaces using :set list
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -322,7 +328,7 @@ map <silent> <LocalLeader>lp :Silent
 let g:LatexBox_Folding=1
 
 " don't close folds after exiting insert mode
-let g:LatexBox_fold_automatic = 1
+let g:LatexBox_fold_automatic = 0
 
 " search options
 set ignorecase
@@ -334,3 +340,20 @@ imap <buffer> [[     \begin{
 
 " omni complete shortcut
 inoremap <C-x> <C-x><C-o>
+
+" don't use latex-box indentation
+let g:LatexBox_custom_indent=0
+
+" wrap words keep indentation level
+set breakindent
+let g:LatexBox_open_pats = []
+let g:LatexBox_close_pats = []
+
+" don't split a word when wrapping
+set linebreak
+
+" display buffers at top when only one open tab
+let g:airline#extensions#tabline#enabled = 1
+
+" automatically enable spell check for latex files
+autocmd FileType tex :setlocal spell
