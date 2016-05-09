@@ -1,8 +1,6 @@
 # ls -l command display in megabytes
-alias lsm="ls -l --block-size=M"
-alias lsa="ls -A"
-alias lsf="ls -F"
-alias lsl="ls -l"
+alias la="ls -A"
+alias lf="ls -F"
 alias ll='ls -1'
 
 # easy move up directory
@@ -18,7 +16,7 @@ alias empty="rm -rf ~/.Trash/*"
 alias rasp="ssh pi@192.168.2.2"
 
 #modify color setting
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 
 #ls coloring
 export CLICOLOR=1
@@ -78,3 +76,10 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 function iterm2_print_user_vars() {
   iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
 }
+
+export GOPATH=$HOME/go
+export PATH+=$PATH:$GOPATH/bin
+export PATH+="$PATH:/usr/local/opt/go/libexec/bin"
+
+alias weather='curl http://wttr.in/Westminster'
+alias moon='curl wttr.in/Moon'
