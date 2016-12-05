@@ -57,7 +57,7 @@ alias hide='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder
 export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
 
 # set history size
-HISTSIZE=5000
+HISTSIZE=1000
 HISTFILESIZE=10000
 
 # don't store in history
@@ -67,7 +67,7 @@ HISTIGNORE="?:history"
 shopt -s histappend
 
 # don't store duplicate commands in history
-HISTCONTROL=erasedups
+HISTCONTROL=ignoreboth:erasedups
 
 # badge displays git branch (iterm)
 function iterm2_print_user_vars() {
