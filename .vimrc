@@ -25,6 +25,7 @@ Plugin 'godlygeek/tabular'                  " auto alignment helper
 Plugin 'plasticboy/vim-markdown'            " markdown syntax (requires tabular)
 Plugin 'Raimondi/delimitMate'               " Auto close braces
 Plugin 'remind'                             " remind calendar syntax
+Plugin 'dag/vim-fish'                       " syntax highlighting for fish scripts
 call vundle#end()                           " required
 filetype plugin indent on                   " required
 
